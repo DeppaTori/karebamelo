@@ -14,18 +14,18 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some( record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    // if (!auth.loggedIn()) {
-    //   next({
-    //     path: '/login',
-    //     query: { redirect: to.fullPath }
-    //   })
-    // } else {
-    //   next()
-    // }
-    next({
-      path: '/login',
-      query: { redirect: to.fullPath },
-    });
+    if (!window.localStorage.getItem('token')) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      });
+    } else {
+      next();
+    }
+    // next({
+    //   path: '/login',
+    //   query: { redirect: to.fullPath },
+    // });
   } else {
     next(); // make sure to always call next()!
   }
