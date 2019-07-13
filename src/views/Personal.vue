@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-     <h1>About</h1>
+  <div class="personal">
+     <h1>Personal</h1>
   </div>
 </template>
 
@@ -11,5 +11,5 @@ import { Component, Vue } from 'vue-property-decorator';
   components: {
   },
 })
-export default class About extends Vue {}
+export default class Personal extends Vue {}
 </script>
